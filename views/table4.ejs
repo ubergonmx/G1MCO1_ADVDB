@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STADVDB MCO1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        #tbl1, #tbl2, #tbl3 {
+            margin: 0;
+            position: absolute;
+            left: 42%;
+            text-align: center;
+        }
+        .dropdown {
+            left: 8%;
+        }
+    </style>
+</head>
+<body onload="hide_all()">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#aboutModal" style="margin-right: 89%;">Group 9</button>
+     </nav>
+
+     <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Queries
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button" onclick="query1()">HIGHEST AVERAGE RATINGS OF EACH GENRE IN THE YEAR 1900</button>
+          <button class="dropdown-item" type="button" onclick="query2()">HIGHEST AVERAGE RATINGS OF EACH GENRE IN THE YEAR 1950</button>
+          <button class="dropdown-item" type="button" onclick="query3()">HIGHEST AVERAGE RATINGS OF EACH GENRE IN THE YEAR 2000</button>
+        </div>
+      </div>
+
+     <div>
+        <table border="1" id="tbl1">
+            <caption style="font-weight: bold; font-style:italic; text-align: center; caption-side: top">HIGHEST AVERAGE RATINGS OF EACH GENRE IN THE YEAR 1900</caption>
+            <th>Average Rating</th>
+            <th>Genre</th>
+
+            <%
+                if(genresData1.length!=0){
+                var i=1;
+                genresData1.forEach(function(data1){
+            %>
+                <tr>
+                    <td>
+                        <%=data1.average %>
+                    </td>
+                    <td>
+                        <%=data1.genre %>
+                    </td>
+                </tr>
+            <%  i++; }) %>
+            <% } else{  %>
+                <tr>
+                    <td colspan="7">No Data Found</td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <div>
+        <table border="1" id="tbl2">
+            <caption style="font-weight: bold; font-style:italic; text-align: center; caption-side: top">HIGHEST AVERAGE RATINGS OF EACH GENRE IN THE YEAR 1950</caption>
+            <th>Average Rating</th>
+            <th>Genre</th>
+
+            <%
+                if(genresData2.length!=0){
+                var i=1;
+                genresData2.forEach(function(data2){
+            %>
+                <tr>
+                    <td>
+                        <%=data2.average %>
+                    </td>
+                    <td>
+                        <%=data2.genre %>
+                    </td>
+                </tr>
+            <%  i++; }) %>
+            <% } else{  %>
+                <tr>
+                    <td colspan="7">No Data Found</td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <div>
+        <table border="1" id="tbl3">
+            <caption style="font-weight: bold; font-style:italic; text-align: center; caption-side: top">HIGHEST AVERAGE RATINGS OF EACH GENRE IN THE YEAR 2000</caption>
+            <th>Average Rating</th>
+            <th>Genre</th>
+
+            <%
+                if(genresData3.length!=0){
+                var i=1;
+                genresData3.forEach(function(data3){
+            %>
+                <tr>
+                    <td>
+                        <%=data3.average %>
+                    </td>
+                    <td>
+                        <%=data3.genre %>
+                    </td>
+                </tr>
+            <%  i++; }) %>
+            <% } else{  %>
+                <tr>
+                    <td colspan="7">No Data Found</td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">Members of the Group</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Castro, Steven Jentyn</p>
+              <p>Gallenero Jr., Jeffrey Jake Afable</p>
+              <p>Li, Roymaxson Chan</p>
+              <p>Megallon, Marione Jay Masibag</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        function query1() {
+            $("#tbl1").show();
+            $("#tbl2").hide();
+            $("#tbl3").hide();
+        }
+        function query2() {
+            $("#tbl1").hide();
+            $("#tbl2").show();
+            $("#tbl3").hide();
+        }
+        function query3() {
+            $("#tbl1").hide();
+            $("#tbl2").hide();
+            $("#tbl3").show();
+        }
+        function hide_all() {
+            $("#tbl1").hide();
+            $("#tbl2").hide();
+            $("#tbl3").hide();
+        }
+    </script>
+</body>
+</html>

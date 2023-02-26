@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STADVDB MCO1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .tables {
+            margin: 0;
+            position: absolute;
+            left: 42%;
+            text-align: center;
+        }
+        .dropdown {
+            left: 8%;
+        }
+    </style>
+</head>
+<body onload="hide_all()">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#aboutModal" style="margin-right: 89%;">Group 9</button>
+     </nav>
+
+     <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Queries
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button" onclick="query1()">TOP 10 DIRECTORS WITH MOST ACTION MOVIES MADE</button>
+          <button class="dropdown-item" type="button" onclick="query2()">TOP 10 DIRECTORS WITH MOST ROMANCE MOVIES MADE</button>
+          <button class="dropdown-item" type="button" onclick="query3()">TOP 10 DIRECTORS WITH MOST COMEDY MOVIES MADE</button>
+          <button class="dropdown-item" type="button" onclick="query4()">TOP 10 DIRECTORS WITH MOST FANTASY MOVIES MADE</button>
+        </div>
+      </div>
+
+     <div>
+        <table border="1" id="tbl1" class="tables">
+            <caption style="font-weight: bold; font-style:italic; text-align: center; caption-side: top">TOP 10 DIRECTORS WITH MOST ACTION MOVIES MADE</caption>
+            <th>Total</th>
+            <th>Director Name</th>
+
+            <%
+                if(directorsData1.length!=0){
+                var i=1;
+                directorsData1.forEach(function(data1){
+            %>
+                <tr>
+                    <td>
+                        <%=data1.total %>
+                    </td>
+                    <td>
+                        <%=data1.director_name %>
+                    </td>
+                </tr>
+            <%  i++; }) %>
+            <% } else{  %>
+                <tr>
+                    <td colspan="7">No Data Found</td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <div>
+        <table border="1" id="tbl2" class="tables">
+            <caption style="font-weight: bold; font-style:italic; text-align: center; caption-side: top">TOP 10 DIRECTORS WITH MOST ROMANCE MOVIES MADE</caption>
+            <th>Total</th>
+            <th>Director Name</th>
+
+            <%
+                if(directorsData2.length!=0){
+                var i=1;
+                directorsData2.forEach(function(data2){
+            %>
+                <tr>
+                    <td>
+                        <%=data2.total %>
+                    </td>
+                    <td>
+                        <%=data2.director_name %>
+                    </td>
+                </tr>
+            <%  i++; }) %>
+            <% } else{  %>
+                <tr>
+                    <td colspan="7">No Data Found</td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <div>
+        <table border="1" id="tbl3" class="tables">
+            <caption style="font-weight: bold; font-style:italic; text-align: center; caption-side: top">TOP 10 DIRECTORS WITH MOST COMEDY MOVIES MADE</caption>
+            <th>Total</th>
+            <th>Director Name</th>
+
+            <%
+                if(directorsData3.length!=0){
+                var i=1;
+                directorsData3.forEach(function(data3){
+            %>
+                <tr>
+                    <td>
+                        <%=data3.total %>
+                    </td>
+                    <td>
+                        <%=data3.director_name %>
+                    </td>
+                </tr>
+            <%  i++; }) %>
+            <% } else{  %>
+                <tr>
+                    <td colspan="7">No Data Found</td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <div>
+        <table border="1" id="tbl4" class="tables">
+            <caption style="font-weight: bold; font-style:italic; text-align: center; caption-side: top">TOP 10 DIRECTORS WITH MOST FANTASY MOVIES MADE</caption>
+            <th>Total</th>
+            <th>Director Name</th>
+
+            <%
+                if(directorsData4.length!=0){
+                var i=1;
+                directorsData4.forEach(function(data4){
+            %>
+                <tr>
+                    <td>
+                        <%=data4.total %>
+                    </td>
+                    <td>
+                        <%=data4.director_name %>
+                    </td>
+                </tr>
+            <%  i++; }) %>
+            <% } else{  %>
+                <tr>
+                    <td colspan="7">No Data Found</td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">Members of the Group</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Castro, Steven Jentyn</p>
+              <p>Gallenero Jr., Jeffrey Jake Afable</p>
+              <p>Li, Roymaxson Chan</p>
+              <p>Megallon, Marione Jay Masibag</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        function query1() {
+            $("#tbl1").show();
+            $("#tbl2").hide();
+            $("#tbl3").hide();
+            $("#tbl4").hide();
+        }
+        function query2() {
+            $("#tbl1").hide();
+            $("#tbl2").show();
+            $("#tbl3").hide();
+            $("#tbl4").hide();
+        }
+        function query3() {
+            $("#tbl1").hide();
+            $("#tbl2").hide();
+            $("#tbl3").show();
+            $("#tbl4").hide();
+        }
+        function query4() {
+            $("#tbl1").hide();
+            $("#tbl2").hide();
+            $("#tbl3").hide();
+            $("#tbl4").show();
+        }
+        function hide_all() {
+            $("#tbl1").hide();
+            $("#tbl2").hide();
+            $("#tbl3").hide();
+            $("#tbl4").hide();
+        }
+    </script>
+</body>
+</html>
